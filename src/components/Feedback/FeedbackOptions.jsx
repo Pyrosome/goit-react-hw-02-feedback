@@ -2,10 +2,20 @@ import PropTypes from 'prop-types';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     return (
-        <div className='bottonsBlock'>
+        <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '10px',    
+              }}>
             {options.map((key) => (
-                <button key={key} type="button" onClick={() =>  onLeaveFeedback(key)}>{FormatLetter(key)}</button>
-
+                <button style={{
+                    backgroundColor: 'white',
+                    width: '80px',
+                    borderRadius: '10px',
+                }}
+                    
+                    key={key} type="button" onClick={() => onLeaveFeedback(key)}>{FormatLetter(key)}</button>
             ))}    
 
         </div>

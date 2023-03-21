@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FeedbackOptions } from './Feedback/FeedbackOptions';
+import { Notification } from './Feedback/Notification';
+import { Section } from './Feedback/Section';
 import { Statistics } from './Feedback/Statistics';
 
 export class App extends Component {
@@ -33,17 +35,28 @@ export class App extends Component {
             <div
               style={{
                 height: '100vh',
+                //margin: '50px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                fontSize: 40,
-                color: '#010101'
-              }}
+                fontSize: 30,
+                color: '#010101',
+                fontFamily: 'Colibri',
+                backgroundImage: 'url(https://i.ibb.co/vdJzMPH/imageedit-2-6901719224.png)',
+            }}
             >
-    
+              
+              <Section title='Leave feedback here!'>
                 <FeedbackOptions options={stateKeys} onLeaveFeedback={this.handleCounter}/>
+              </Section>
+              <Section title='Statistics'>
+              
+                { this.countTotalFeedback() > 0 ?
                 <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback} positivePercentage={this.countPositiveFeedbackPercentage}/>
+                :
+                <Notification message="There is no feedback" />}
+              </Section>
             </div>
         )
     }
